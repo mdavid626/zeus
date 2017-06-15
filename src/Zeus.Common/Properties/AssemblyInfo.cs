@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Zeus.Data")]
+[assembly: AssemblyTitle("Zeus.Common")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Zeus.Data")]
+[assembly: AssemblyProduct("Zeus.Common")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("34e61948-59dd-4e7d-9506-db3d8ae01f46")]
+[assembly: Guid("cfa6be36-34cc-4f5e-ad71-5c2aa79ead41")]
 
 // Version information for an assembly consists of the following four values:
 //

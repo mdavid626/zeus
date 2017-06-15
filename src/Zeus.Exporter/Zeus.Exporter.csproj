@@ -48,11 +48,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Zeus.Data\Zeus.Data.csproj">
-      <Project>{34e61948-59dd-4e7d-9506-db3d8ae01f46}</Project>
-      <Name>Zeus.Data</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
