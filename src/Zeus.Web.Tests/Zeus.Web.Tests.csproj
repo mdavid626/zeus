@@ -66,6 +66,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Zeus.Common\Zeus.Common.csproj">
+      <Project>{cfa6be36-34cc-4f5e-ad71-5c2aa79ead41}</Project>
+      <Name>Zeus.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Zeus.Web\Zeus.Web.csproj">
       <Project>{6E1D0D7F-ABB8-40A1-9BB7-A3460837FBDE}</Project>
       <Name>Zeus.Web</Name>

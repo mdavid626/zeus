@@ -8,8 +8,8 @@ namespace Zeus.Common
 {
     public enum TrackedEventType
     {
-        List,
-        Details,
-        Conversion
+        List = 1,
+        Details = 2,
+        Conversion = 3
     }
 }
