@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeus.Exporter", "Zeus.Expor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeus.Data", "Zeus.Data\Zeus.Data.csproj", "{34E61948-59DD-4E7D-9506-DB3D8AE01F46}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeus.Exporter.Tests", "Zeus.Exporter.Tests\Zeus.Exporter.Tests.csproj", "{1B413888-272F-480C-9222-A02A601ECAFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeus.Data.Tests", "Zeus.Data.Tests\Zeus.Data.Tests.csproj", "{522A33D6-9764-44DB-877B-09D7B40FCF32}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{34E61948-59DD-4E7D-9506-DB3D8AE01F46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34E61948-59DD-4E7D-9506-DB3D8AE01F46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34E61948-59DD-4E7D-9506-DB3D8AE01F46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B413888-272F-480C-9222-A02A601ECAFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B413888-272F-480C-9222-A02A601ECAFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B413888-272F-480C-9222-A02A601ECAFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B413888-272F-480C-9222-A02A601ECAFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{522A33D6-9764-44DB-877B-09D7B40FCF32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{522A33D6-9764-44DB-877B-09D7B40FCF32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{522A33D6-9764-44DB-877B-09D7B40FCF32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{522A33D6-9764-44DB-877B-09D7B40FCF32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
