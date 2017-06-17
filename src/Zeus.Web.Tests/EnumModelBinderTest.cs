@@ -27,6 +27,7 @@ namespace Zeus.Web.Tests
             var result = binder.BindModel(null, bindingContext);
 
             Assert.IsTrue(result);
+            Assert.IsTrue(bindingContext.ModelState.IsValid);
             Assert.AreEqual(bindingContext.Model, TestEnum.Item1);
         }
 
@@ -39,6 +40,7 @@ namespace Zeus.Web.Tests
             var result = binder.BindModel(null, bindingContext);
 
             Assert.IsTrue(result);
+            Assert.IsTrue(bindingContext.ModelState.IsValid);
             Assert.AreEqual(bindingContext.Model, TestEnum.Item1);
         }
 
@@ -51,6 +53,7 @@ namespace Zeus.Web.Tests
             var result = binder.BindModel(null, bindingContext);
 
             Assert.IsTrue(result);
+            Assert.IsTrue(bindingContext.ModelState.IsValid);
             Assert.AreEqual(bindingContext.Model, TestEnum.Item2);
         }
 
@@ -63,6 +66,7 @@ namespace Zeus.Web.Tests
             var result = binder.BindModel(null, bindingContext);
 
             Assert.IsTrue(result);
+            Assert.IsTrue(bindingContext.ModelState.IsValid);
             Assert.AreEqual(bindingContext.Model, TestEnum.Item3);
         }
 
@@ -75,6 +79,7 @@ namespace Zeus.Web.Tests
             var result = binder.BindModel(null, bindingContext);
 
             Assert.IsFalse(result);
+            Assert.IsFalse(bindingContext.ModelState.IsValid);
             Assert.IsNull(bindingContext.Model);
         }
 
@@ -87,6 +92,7 @@ namespace Zeus.Web.Tests
             var result = binder.BindModel(null, bindingContext);
 
             Assert.IsFalse(result);
+            Assert.IsTrue(bindingContext.ModelState.IsValid);
             Assert.IsNull(bindingContext.Model);
         }
 
@@ -99,6 +105,7 @@ namespace Zeus.Web.Tests
             var result = binder.BindModel(null, bindingContext);
 
             Assert.IsFalse(result);
+            Assert.IsTrue(bindingContext.ModelState.IsValid);
             Assert.IsNull(bindingContext.Model);
         }
     }

@@ -23,7 +23,7 @@ namespace Zeus.Web.Binders
                 return false;
 
             var ids = new List<int>();
-            foreach (var idText in valueText.Split(','))
+            foreach (var idText in valueText.Split(new [] {',' }, StringSplitOptions.RemoveEmptyEntries))
             {
                 int id;
                 if (int.TryParse(idText, out id))

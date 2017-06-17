@@ -26,7 +26,7 @@ namespace Zeus.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (ids != null && eventType != null)
+                if (ids != null && eventType != null && ids.Any())
                 {
                     var trackedEvent = new TrackedEvent();
                     trackedEvent.Ids = ids;

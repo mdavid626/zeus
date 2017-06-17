@@ -26,6 +26,18 @@ namespace Zeus.Web.Tests
         }
 
         [TestMethod]
+        public void TestEmptyArray()
+        {
+            var tracker = Substitute.For<ITracker>();
+            var controller = new TrackController(tracker);
+
+            var response = controller.Get(new int[0], TrackedEventType.List);
+
+            tracker.DidNotReceive().Track(Arg.Any<TrackedEvent>());
+            Assert.IsTrue(response is BadRequestResult);
+        }
+
+        [TestMethod]
         public void TestGetWithoutParams()
         {
             var tracker = Substitute.For<ITracker>();
