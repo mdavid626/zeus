@@ -11,9 +11,37 @@ namespace Zeus.Exporter.Tests
     public class ExporterContextFromArgsTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestUpperBoundOk()
         {
-            
+            var args = new[] { "2017-06-17" };
+            var context = new ExporterContextFromArgs(args);
+            Assert.AreEqual(context.UpperBound, DateTime.Parse("2017-06-17").Date);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(FormatException))]
+        public void TestUpperBoundError()
+        {
+            var args = new[] { "abc" };
+            var context = new ExporterContextFromArgs(args);
+            var date = context.UpperBound.ToString();
+        }
+
+        [TestMethod]
+        public void TestWithoutUpperBound()
+        {
+            var args = new string[0];
+            var context = new ExporterContextFromArgs(args);
+            Assert.AreEqual(context.UpperBound, DateTime.Now.Date);
+        }
+
+        [TestMethod]
+        public void TestUpperBoundWithOtherArgs()
+        {
+            var args = new[] { "2017-06-17", "blabla", "trallala" };
+            var context = new ExporterContextFromArgs(args);
+            Assert.AreEqual(context.UpperBound, DateTime.Parse("2017-06-17").Date);
+        }
+
     }
 }

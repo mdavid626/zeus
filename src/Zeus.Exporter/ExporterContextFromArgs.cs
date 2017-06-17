@@ -45,7 +45,7 @@ namespace Zeus.Exporter
                 return dt;
             }
 
-            return DateTime.Now.Date;
+            throw new FormatException($"The input string ({dateText}) is in wrong format. The supported format is: yyyy-MM-dd");
         }
     }
 }
