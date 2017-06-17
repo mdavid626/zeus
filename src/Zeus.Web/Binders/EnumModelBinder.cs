@@ -21,7 +21,7 @@ namespace Zeus.Web.Binders
             var value = bindingContext.ValueProvider.GetValue(bindingContext.ModelName);
             var valueText = value?.RawValue as string;
 
-            if (valueText == null)
+            if (String.IsNullOrEmpty(valueText))
                 return false;
 
             T eventType;
