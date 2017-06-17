@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,8 +13,7 @@ namespace Zeus.Trackers
 
         public ConnectionStringProvider()
         {
-            var settings = new Properties.Settings();
-            sqlConnectionString = settings.SqlConnectionString;
+            sqlConnectionString = ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString;
         }
 
         public string GetSqlConnectionString()
