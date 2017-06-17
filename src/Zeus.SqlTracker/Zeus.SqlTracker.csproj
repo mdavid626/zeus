@@ -7,7 +7,7 @@
     <ProjectGuid>{713AD47C-5DDF-4F32-8594-F41D399DBAEE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Zeus.SqlTracker</RootNamespace>
+    <RootNamespace>Zeus.Trackers</RootNamespace>
     <AssemblyName>Zeus.SqlTracker</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -44,6 +44,11 @@
     <Compile Include="ConnectionStringProvider.cs" />
     <Compile Include="IConnectionStringProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="SqlTracker.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +59,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="create.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

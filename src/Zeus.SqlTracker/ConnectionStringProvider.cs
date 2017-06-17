@@ -8,9 +8,17 @@ namespace Zeus.Trackers
 {
     public class ConnectionStringProvider : IConnectionStringProvider
     {
+        private string sqlConnectionString;
+
+        public ConnectionStringProvider()
+        {
+            var settings = new Properties.Settings();
+            sqlConnectionString = settings.SqlConnectionString;
+        }
+
         public string GetSqlConnectionString()
         {
-            return null;
+            return sqlConnectionString;
         }
     }
 }
