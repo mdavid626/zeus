@@ -31,6 +31,7 @@ namespace Zeus.Web.Controllers
                     var trackedEvent = new TrackedEvent();
                     trackedEvent.Ids = ids;
                     trackedEvent.Type = eventType.Value;
+                    trackedEvent.CreationDate = DateTime.Now;
                     tracker.Track(trackedEvent);
                     return Ok();
                 }

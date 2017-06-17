@@ -11,5 +11,7 @@ namespace Zeus.Trackers
         public int[] Ids { get; set; }
 
         public TrackedEventType Type { get; set; }
+
+        public DateTime CreationDate { get; set; }
     }
 }
