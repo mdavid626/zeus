@@ -16,10 +16,10 @@ namespace Zeus.Trackers
 
         public int Conversions { get; set; }
 
-        public float ClickRate7Days { get; set; }
+        public double ClickRate7Days { get; set; }
 
-        public float ConversionRate7Days { get; set; }
+        public double ConversionRate7Days { get; set; }
 
-        public float ConversionRate14Days { get; set; }
+        public double ConversionRate14Days { get; set; }
     }
 }

@@ -10,6 +10,6 @@ namespace Zeus.Trackers
     {
         void Track(TrackedEvent trackedEvent);
 
-        IEnumerable<ProductStatistics> GetStatistics(DateTime maxDate);
+        IEnumerable<ProductStatistics> GetStatistics(DateTime upperBound);
     }
 }
