@@ -117,9 +117,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Zeus.Common\Zeus.Common.csproj">
       <Project>{cfa6be36-34cc-4f5e-ad71-5c2aa79ead41}</Project>
