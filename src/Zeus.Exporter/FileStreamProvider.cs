@@ -9,9 +9,9 @@ namespace Zeus.Exporter
 {
     public class FileStreamProvider : IStreamProvider
     {
-        public TextWriter Create(DateTime date)
+        public TextWriter Create(DateTime upperBound)
         {
-            return File.CreateText($"events_{date:yyyy-MM-dd}.csv");
+            return File.CreateText($"events_{upperBound:yyyy-MM-dd}.csv");
         }
     }
 }

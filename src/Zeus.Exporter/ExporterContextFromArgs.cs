@@ -33,22 +33,19 @@ namespace Zeus.Exporter
         private DateTime ParseUpperBound()
         {
             var dateText = Arguments?.FirstOrDefault();
+
             if (String.IsNullOrEmpty(dateText))
             {
                 return DateTime.Now.Date;
             }
-            else
+
+            DateTime dt;
+            if (DateTime.TryParseExact(dateText, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out dt))
             {
-                DateTime dt;
-                if (DateTime.TryParseExact(dateText, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out dt))
-                {
-                    return dt;
-                }
-                else
-                {
-                    return DateTime.Now.Date;
-                }
+                return dt;
             }
+
+            return DateTime.Now.Date;
         }
     }
 }

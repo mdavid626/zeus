@@ -9,6 +9,6 @@ namespace Zeus.Exporter
 {
     public interface IStreamProvider
     {
-        TextWriter Create(DateTime date);
+        TextWriter Create(DateTime upperBound);
     }
 }
