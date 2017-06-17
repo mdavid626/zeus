@@ -13,7 +13,7 @@ namespace Zeus.Trackers
 
         public ConnectionStringProvider()
         {
-            sqlConnectionString = ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString;
+            sqlConnectionString = ConfigurationManager.ConnectionStrings["SqlConnectionString"]?.ConnectionString;
         }
 
         public string GetSqlConnectionString()
