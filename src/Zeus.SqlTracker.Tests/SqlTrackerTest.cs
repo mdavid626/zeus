@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NSubstitute;
 using Zeus.Trackers;
 
 namespace Zeus.SqlTrac2ker2.Tests
@@ -13,7 +14,9 @@ namespace Zeus.SqlTrac2ker2.Tests
         [TestMethod]
         public void TestTrackEvent()
         {
-            var tracker = new SqlTracker(ConnectionString);
+            var connStringProvider = Substitute.For<IConnectionStringProvider>();
+            connStringProvider.GetSqlConnectionString().Returns(s => ConnectionString);
+            var tracker = new SqlTracker(connStringProvider);
             tracker.Track(new TrackedEvent()
             {
                 Ids = new [] {1, 2, 3},
@@ -25,7 +28,9 @@ namespace Zeus.SqlTrac2ker2.Tests
         [TestMethod]
         public void TestGetStatistics()
         {
-            var tracker = new SqlTracker(ConnectionString);
+            var connStringProvider = Substitute.For<IConnectionStringProvider>();
+            connStringProvider.GetSqlConnectionString().Returns(s => ConnectionString);
+            var tracker = new SqlTracker(connStringProvider);
             var stats = tracker.GetStatistics(DateTime.Now).ToList();
         }
     }

@@ -12,14 +12,9 @@ namespace Zeus.Trackers
     {
         public string ConnectionString { get; }
 
-        public SqlTracker()
+        public SqlTracker(IConnectionStringProvider connStringProvider)
         {
-            
-        }
-
-        public SqlTracker(string connectionString)
-        {
-            ConnectionString = connectionString;
+            ConnectionString = connStringProvider.GetSqlConnectionString();
         }
 
         public void Track(TrackedEvent trackedEvent)
