@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="IntArrayModelBinderTest.cs" />
     <Compile Include="EnumModelBinderTest.cs" />
+    <Compile Include="ModelBinderTestBase.cs" />
     <Compile Include="TrackControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
