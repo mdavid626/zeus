@@ -39,8 +39,7 @@ namespace Zeus.Exporter
                 return DateTime.Now.Date;
             }
 
-            DateTime dt;
-            if (DateTime.TryParseExact(dateText, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out dt))
+            if (DateTime.TryParseExact(dateText, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dt))
             {
                 return dt;
             }
