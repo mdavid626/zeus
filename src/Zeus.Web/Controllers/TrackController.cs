@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
-using Zeus.Common;
+using Zeus.Trackers;
 using Zeus.Web.Binders;
 
 namespace Zeus.Web.Controllers
@@ -14,6 +14,11 @@ namespace Zeus.Web.Controllers
     public class TrackController : ApiController
     {
         private readonly ITracker tracker;
+
+        public TrackController(ITracker tracker)
+        {
+            this.tracker = tracker;
+        }
 
         [Route("track")]
         public IHttpActionResult Get(
@@ -27,7 +32,7 @@ namespace Zeus.Web.Controllers
                     var trackedEvent = new TrackedEvent();
                     trackedEvent.Ids = ids;
                     trackedEvent.Type = eventType.Value;
-                    //tracker.Track(trackedEvent);
+                    tracker.Track(trackedEvent);
                     return Ok();
                 }
             }

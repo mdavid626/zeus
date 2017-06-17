@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
 using System.Web.Http.ModelBinding.Binders;
-using Zeus.Common;
+using Microsoft.Practices.Unity;
+using Zeus.Trackers;
 using Zeus.Web.Binders;
 
 namespace Zeus.Web
@@ -13,13 +14,22 @@ namespace Zeus.Web
     {
         public static void Register(HttpConfiguration config)
         {
+            config.AddUnity();
+
             config.MapHttpAttributeRoutes();
 
-            AddModelBinderProvider<int[]>(config, new IntArrayModelBinder());
-            AddModelBinderProvider<TrackedEventType>(config, new EnumModelBinder<TrackedEventType>());
+            config.AddModelBinderProvider<int[]>(new IntArrayModelBinder());
+            config.AddModelBinderProvider<TrackedEventType>(new EnumModelBinder<TrackedEventType>());
         }
 
-        private static void AddModelBinderProvider<T>(HttpConfiguration config, IModelBinder binder)
+        private static void AddUnity(this HttpConfiguration config)
+        {
+            var container = new UnityContainer();
+            container.RegisterType<ITracker, SqlTracker>(new HierarchicalLifetimeManager());
+            config.DependencyResolver = new UnityResolver(container);
+        }
+
+        private static void AddModelBinderProvider<T>(this HttpConfiguration config, IModelBinder binder)
         {
             var provider = new SimpleModelBinderProvider(typeof(T), binder);
             config.Services.Insert(typeof(ModelBinderProvider), 0, provider);

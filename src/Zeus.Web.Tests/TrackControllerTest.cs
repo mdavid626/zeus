@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Http.Results;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Zeus.Common;
+using Zeus.Trackers;
 using Zeus.Web.Controllers;
 
 namespace Zeus.Web.Tests
@@ -12,7 +12,7 @@ namespace Zeus.Web.Tests
         [TestMethod]
         public void TestMethod1()
         {
-            var ctrl = new TrackController();
+            var ctrl = new TrackController(new SqlTracker());
             var response = ctrl.Get(new [] {1, 2, 3}, TrackedEventType.List);
             Assert.IsTrue(response is OkResult);
         }

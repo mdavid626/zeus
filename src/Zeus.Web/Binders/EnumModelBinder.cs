@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.DynamicData;
 using System.Web.Http.Controllers;
 using System.Web.Http.ModelBinding;
-using Zeus.Common;
 
 namespace Zeus.Web.Binders
 {
