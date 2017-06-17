@@ -110,6 +110,10 @@
       <Project>{cfa6be36-34cc-4f5e-ad71-5c2aa79ead41}</Project>
       <Name>Zeus.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Zeus.SqlTracker\Zeus.SqlTracker.csproj">
+      <Project>{713ad47c-5ddf-4f32-8594-f41d399dbaee}</Project>
+      <Name>Zeus.SqlTracker</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
