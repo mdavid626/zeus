@@ -10,7 +10,6 @@ using Zeus.Web.Binders;
 
 namespace Zeus.Web.Controllers
 {
-    
     public class TrackController : ApiController
     {
         private readonly ITracker tracker;
