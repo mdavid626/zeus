@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Http.Results;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NSubstitute;
 using Zeus.Trackers;
 using Zeus.Web.Controllers;
 
@@ -10,10 +12,16 @@ namespace Zeus.Web.Tests
     public class TrackControllerTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestGet()
         {
-            var ctrl = new TrackController(new SqlTracker());
-            var response = ctrl.Get(new [] {1, 2, 3}, TrackedEventType.List);
+            var ids = new[] {1, 2, 3};
+            var type = TrackedEventType.List;
+            var tracker = Substitute.For<ITracker>();
+
+            var controller = new TrackController(tracker);
+            var response = controller.Get(ids, type);
+
+            tracker.Received().Track(Arg.Is<TrackedEvent>(t => t.Ids.SequenceEqual(ids) && t.Type == type));
             Assert.IsTrue(response is OkResult);
         }
     }
