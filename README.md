@@ -77,7 +77,7 @@ Each line in the file refers to one product and there is at most one line per pr
  50,000 products
  10 product / requets
  over 10,000,000 rows in the database
- exporting 1.5MB file took 50s (100 DTU/s) and 13s (1000 DTU/s)
+ exporting [1.5MB file](https://github.com/mdavid626/zeus/blob/master/doc/events_2017-06-19.csv?raw=true) took 50s (100 DTU/s) and 13s (1000 DTU/s)
  
  Web: 25% memory, 50% CPU
  DB size: 400 MB
