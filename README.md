@@ -85,8 +85,8 @@ Each line in the file refers to one product and there is at most one line per pr
  15,000 requests / min
  100,000 requests total
 
- ![CPU/Memory](https://rawgit.com/mdavid626/zeus/master/doc/cpu.jpg)
- ![DB Size](https://rawgit.com/mdavid626/zeus/master/doc/cpu.jpg)
- ![DTU percentage](https://rawgit.com/mdavid626/zeus/master/doc/dtu.jpg)
- ![Requests count](https://rawgit.com/mdavid626/zeus/master/doc/requestscount.jpg)
- ![Response time](https://rawgit.com/mdavid626/zeus/master/doc/responsetime.jpg)
+ ![CPU/Memory](https://github.com/mdavid626/zeus/blob/master/doc/cpu.jpg?raw=true)
+ ![DB Size](https://github.com/mdavid626/zeus/blob/master/doc/cpu.jpg?raw=true)
+ ![DTU percentage](https://github.com/mdavid626/zeus/blob/master/doc/dtu.jpg?raw=true)
+ ![Requests count](https://github.com/mdavid626/zeus/blob/master/doc/requestscount.jpg?raw=true)
+ ![Response time](https://github.com/mdavid626/zeus/blob/master/doc/responsetime.jpg?raw=true)
