@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Common;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,12 +14,17 @@ namespace Zeus.Trackers
     {
         public TrackedEventContext() : base("SqlConnectionString")
         {
-            
+            Init();
         }
 
         public TrackedEventContext(DbConnection connection, bool contextOwnsConnection) : base(connection, contextOwnsConnection)
         {
-            
+            Init();
+        }
+
+        private void Init()
+        {
+            ((IObjectContextAdapter)this).ObjectContext.CommandTimeout = 300;
         }
 
         public DbSet<TrackedEventDto> TrackedEvents { get; set; }

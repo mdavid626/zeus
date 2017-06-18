@@ -49,6 +49,7 @@ namespace Zeus.Trackers
                  .Where(e => e.EventDate >= lowerBound14Days && e.EventDate < upperDate)
                  .GroupBy(e => e.ProductId)
                  .Select(e => e.Key)
+                 .OrderBy(e => e)
                  .Select(pId => 
                     new
                     {
