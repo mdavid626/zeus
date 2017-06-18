@@ -89,7 +89,7 @@ Each line in the file refers to one product and there is at most one line per pr
   ![CPU/Memory](https://github.com/mdavid626/zeus/blob/master/doc/cpu.jpg?raw=true)
 
  #### Final database size
- ![DB Size](https://github.com/mdavid626/zeus/blob/master/doc/cpu.jpg?raw=true)
+ ![DB Size](https://github.com/mdavid626/zeus/blob/master/doc/dbsize.jpg?raw=true)
 
  #### DTU percentage
  ![DTU percentage](https://github.com/mdavid626/zeus/blob/master/doc/dtu.jpg?raw=true)
