@@ -25,7 +25,7 @@ namespace Zeus.Web
         private static void AddUnity(this HttpConfiguration config)
         {
             var container = new UnityContainer();
-            container.RegisterType<IConnectionStringProvider, ConnectionStringProvider>(new HierarchicalLifetimeManager());
+            container.RegisterType<ITrackedEventContextProvider, TrackedEventContextProvider>(new HierarchicalLifetimeManager());
             container.RegisterType<ITracker, SqlTracker>(new HierarchicalLifetimeManager());
             config.DependencyResolver = new UnityResolver(container);
         }

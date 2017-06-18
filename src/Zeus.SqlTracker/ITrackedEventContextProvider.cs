@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Zeus.Trackers
 {
-    public interface IConnectionStringProvider
+    public interface ITrackedEventContextProvider
     {
-        string GetSqlConnectionString();
+        TrackedEventContext Provide();
     }
 }

@@ -13,7 +13,7 @@ namespace Zeus.Exporter
         static void Main(string[] args)
         {
             var container = new UnityContainer();
-            container.RegisterType<IConnectionStringProvider, ConnectionStringProvider>();
+            container.RegisterType<ITrackedEventContextProvider, TrackedEventContextProvider>();
             container.RegisterType<ITracker, SqlTracker>();
             container.RegisterType<IStreamProvider, FileStreamProvider>();
             container.RegisterType<IExporter, CsvExporter>();

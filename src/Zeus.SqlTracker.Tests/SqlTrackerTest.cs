@@ -1,72 +1,78 @@
 ﻿using System;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Zeus.Trackers;
 
-namespace Zeus.SqlTrac2ker2.Tests
+namespace Zeus.Trackers.Tests
 {
     [TestClass]
     public class SqlTrackerTest
     {
-        public const string ConnectionString = "Server=localhost;Database=zeus;Trusted_connection=True";
-
         [TestMethod]
         public void TestTrackEvent()
         {
             // arrange
-            var connStringProvider = Substitute.For<IConnectionStringProvider>();
-            connStringProvider.GetSqlConnectionString().Returns(s => ConnectionString);
-            var tracker = new SqlTracker(connStringProvider);
-            var date = DateTime.Now;
-
-            // act
-            tracker.Track(new TrackedEvent()
+            var dbContextProvider = Substitute.For<ITrackedEventContextProvider>();
+            using (var connection = Effort.DbConnectionFactory.CreateTransient())
             {
-                Ids = new [] {1, 2, 3},
-                Type = TrackedEventType.List,
-                CreationDate = date
-            });
+                dbContextProvider.Provide().Returns(p => new TrackedEventContext(connection, false));
+                var tracker = new SqlTracker(dbContextProvider);
+                var date = DateTime.Now;
 
-            // assert
-            var query = 
-                @"select count(*) as TrackedEventCount
-                  from TrackedEvent
-                  where ProductId = @productId and EventType = @eventType and EventDate = @eventDate";
-
-            using (var cn = new SqlConnection(ConnectionString))
-            {
-                cn.Open();
-                using (var cmd = new SqlCommand(query, cn))
+                // act
+                tracker.Track(new TrackedEvent()
                 {
-                    cmd.Parameters.Add("@productId", SqlDbType.Int).Value = 1;
-                    cmd.Parameters.Add("@eventType", SqlDbType.TinyInt).Value = TrackedEventType.List;
-                    cmd.Parameters.Add("@eventDate", SqlDbType.DateTime2).Value = date;
+                    Ids = new[] { 1, 2, 3 },
+                    Type = TrackedEventType.List,
+                    CreationDate = date
+                });
 
-                    var reader = cmd.ExecuteReader();
-
-                    var result = reader.Read();
-                    Assert.IsTrue(result);
-
-                    var count = (int)reader["TrackedEventCount"];
-                    Assert.IsTrue(count == 1);
-
-                    reader.Close();
+                // assert
+                using (var ctx = dbContextProvider.Provide())
+                {
+                    var any = ctx.TrackedEvents
+                        .Any(t => t.ProductId == 1 && t.EventType == (byte) TrackedEventType.List && t.EventDate == date);
+                    Assert.IsTrue(any);
                 }
-                cn.Close();
             }
         }
 
         [TestMethod]
         public void TestGetStatistics()
         {
-            var connStringProvider = Substitute.For<IConnectionStringProvider>();
-            connStringProvider.GetSqlConnectionString().Returns(s => ConnectionString);
-            var tracker = new SqlTracker(connStringProvider);
-            var stats = tracker.GetStatistics(DateTime.Now).ToList();
+            // arrange
+            var dbContextProvider = Substitute.For<ITrackedEventContextProvider>();
+            using (var connection = Effort.DbConnectionFactory.CreateTransient())
+            {
+                dbContextProvider.Provide().Returns(p => new TrackedEventContext(connection, false));
+                var tracker = new SqlTracker(dbContextProvider);
+
+                var date = DateTime.Now.AddDays(-1);
+
+                tracker.Track(new TrackedEvent()
+                {
+                    Ids = new [] { 1 },
+                    Type = TrackedEventType.List,
+                    CreationDate = date
+                });
+
+                // act
+                var stats = tracker.GetStatistics(DateTime.Now).ToList();
+                var item = stats.Single();
+                
+                // assert
+                Assert.IsTrue(item.Id == 1);
+                Assert.IsTrue(item.ListImpressions == 1);
+                Assert.IsTrue(item.DetailsViews == 0);
+                Assert.IsTrue(item.Conversions == 0);
+                Assert.IsTrue(item.ClickRate7Days == 0);
+                Assert.IsTrue(item.ConversionRate7Days == 0);
+                Assert.IsTrue(item.ConversionRate14Days == 0);
+            }
         }
     }
 }
+
+
 
