@@ -53,3 +53,40 @@ Each line in the file refers to one product and there is at most one line per pr
  * You may generate data as you need for checking your solution.  
  * You need to provide the source code and any additional info in order for us to build and run the solution.
  * You should send the solution until Wednesday, 21st of June, by the end of the day. You may send it anytime earlier, though. The sooner the better.
+
+ ## Solution
+
+ Main solution: Zeus.sln
+
+ Zeus.Common
+ Zeus.Exporter
+ Zeus.SqlTracker
+ Zeus.Web
+
+ Unit Tests projects:
+ Zeus.Exporter.Tests
+ Zeus.SqlTracker.Tests
+ Zeus.Web.Tests
+
+ ### Load Testing in Azure
+ 250 requests / sec
+ Web: 4 Core, 7 GB RAM
+ SQL: 100 DTU/s
+ requests from 2 computers
+ locustio
+ 50,000 products
+ 10 product / requets
+ over 10,000,000 rows in the database
+ exporting 1.5MB file took 50s (100 DTU/s) and 13s (1000 DTU/s)
+ 
+ Web: 25% memory, 50% CPU
+ DB size: 400 MB
+ Average response time: 200-400ms
+ 15,000 requests / min
+ 100,000 requests total
+
+ ![CPU/Memory](https://rawgit.com/mdavid626/zeus/master/doc/cpu.jpg)
+ ![DB Size](https://rawgit.com/mdavid626/zeus/master/doc/cpu.jpg)
+ ![DTU percentage](https://rawgit.com/mdavid626/zeus/master/doc/dtu.jpg)
+ ![Requests count](https://rawgit.com/mdavid626/zeus/master/doc/requestscount.jpg)
+ ![Response time](https://rawgit.com/mdavid626/zeus/master/doc/responsetime.jpg)
