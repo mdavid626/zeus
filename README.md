@@ -58,15 +58,15 @@ Each line in the file refers to one product and there is at most one line per pr
  The events are logged by a ASP.NET Web API 2 web application to a SQL Server database. The exporting is done by a simple .NET command line tool. 
 
  ### Development Tools
- Visual Studio 2017 Community
- .NET Framework 4.7
- ASP.NET Web API 2
- MS SQL Server 2016
- NuGet Package Manager
- locust.io for load testing
- Azure App Service and SQL Database
- Libraries: Entity Framework, Unity (DI)
- Test libraries: MSTest, NSubstitute, Effort
+ * Visual Studio 2017 Community
+ * .NET Framework 4.7
+ * ASP.NET Web API 2
+ * MS SQL Server 2016
+ * NuGet Package Manager
+ * locust.io for load testing
+ * Azure App Service and SQL Database
+ * Libraries: Entity Framework, Unity (DI)
+ * Test libraries: MSTest, NSubstitute, Effort
 
  ### Structure
  Solution file: src/Zeus.sln.
