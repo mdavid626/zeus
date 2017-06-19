@@ -90,6 +90,7 @@ Each line in the file refers to one product and there is at most one line per pr
 
  #### Exporter: 
  Usage: `.\exporter.exe` or `.\exporter.exe 2017-06-19`
+
  Creates the file in the current directory. The name of the file is `events_{date}.csv`.
  If the file already exists, it's overwritten without notice.
  
