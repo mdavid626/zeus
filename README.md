@@ -71,26 +71,26 @@ Each line in the file refers to one product and there is at most one line per pr
  ### Structure
  Solution file: `src/Zeus.sln`.
 
- * Zeus.Common: shared classes
- * Zeus.Exporter: command line tool for exporting the data into csv format
- * Zeus.SqlTracker: tracks events into a SQL database
- * Zeus.Web: HTTP endpoint
+ * `Zeus.Common`: shared classes
+ * `Zeus.Exporter`: command line tool for exporting the data into csv format
+ * `Zeus.SqlTracker`: tracks events into a SQL database
+ * `Zeus.Web`: HTTP endpoint
  
  Unit Tests projects:
- * Zeus.Exporter.Tests
- * Zeus.SqlTracker.Tests
- * Zeus.Web.Tests
+ * `Zeus.Exporter.Tests`
+ * `Zeus.SqlTracker.Tests`
+ * `Zeus.Web.Tests`
 
  #### Web
- Contains the HTTP endpoint. It's using the ModelBinders to convert the query parameters. Has a simple endpoint in the TrackController. It's using an ITracker to track the events.
+ Contains the HTTP endpoint. It's using the `ModelBinders` to convert the query parameters. Has a simple endpoint in the `TrackController`. It's using an `ITracker` to track the events.
  Dependency injection is done using the Unity framework. 
 
  #### SqlTracker
- Tracks events into a MS SQL database. It's using Entity Framework 6.1.3 for ORM mapping. The "create.sql" script can be used to create the database tables. The summarization is done in the SQL server, the query is created using Linq. 
+ Tracks events into a MS SQL database. It's using Entity Framework 6.1.3 for ORM mapping. The `create.sql` script can be used to create the database tables. The summarization is done in the SQL server, the query is created using Linq. 
 
  #### Exporter: 
- Usage: .\exporter.exe or .\exporter.exe 2017-06-19
- Creates the file in the current directory. The name of the file is events_{date}.csv.
+ Usage: `.\exporter.exe` or `.\exporter.exe 2017-06-19`
+ Creates the file in the current directory. The name of the file is `events_{date}.csv`.
  If the file already exists, it's overwritten without notice.
  
  ### Load Testing in Azure
@@ -102,7 +102,7 @@ Each line in the file refers to one product and there is at most one line per pr
 
  Load Testing with 2 computers:
  * 250 requests / sec
- * locustio configuration in the file "locustfile.py"
+ * locustio configuration in the file `locustfile.py`
  * 50,000 different product ids
  * 10 products / requets
  * test running for about an hour
