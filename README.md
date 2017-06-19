@@ -69,7 +69,7 @@ Each line in the file refers to one product and there is at most one line per pr
  * Test libraries: MSTest, NSubstitute, Effort
 
  ### Structure
- Solution file: src/Zeus.sln.
+ Solution file: `src/Zeus.sln`.
 
  * Zeus.Common: shared classes
  * Zeus.Exporter: command line tool for exporting the data into csv format
