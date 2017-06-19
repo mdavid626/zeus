@@ -55,36 +55,67 @@ Each line in the file refers to one product and there is at most one line per pr
  * You should send the solution until Wednesday, 21st of June, by the end of the day. You may send it anytime earlier, though. The sooner the better.
 
  ## Solution
+ The events are logged by a ASP.NET Web API 2 web application to a SQL Server database. The exporting is done by a simple .NET command line tool. 
 
- Main solution: Zeus.sln
+ ### Development Tools
+ Visual Studio 2017 Community
+ .NET Framework 4.7
+ ASP.NET Web API 2
+ MS SQL Server 2016
+ NuGet Package Manager
+ locust.io for load testing
+ Azure App Service and SQL Database
+ Libraries: Entity Framework, Unity (DI)
+ Test libraries: MSTest, NSubstitute, Effort
 
- Zeus.Common
- Zeus.Exporter
- Zeus.SqlTracker
- Zeus.Web
+ ### Structure
+ Solution file: src/Zeus.sln.
 
- Unit Tests projects:
- Zeus.Exporter.Tests
- Zeus.SqlTracker.Tests
- Zeus.Web.Tests
-
- ### Load Testing in Azure
- 250 requests / sec
- Web: 4 Core, 7 GB RAM
- SQL: 100 DTU/s
- requests from 2 computers
- locustio
- 50,000 products
- 10 product / requets
- over 10,000,000 rows in the database
- exporting [1.5MB file](https://github.com/mdavid626/zeus/blob/master/doc/events_2017-06-19.csv?raw=true) took 50s (100 DTU/s) and 13s (1000 DTU/s)
+ * Zeus.Common: shared classes
+ * Zeus.Exporter: command line tool for exporting the data into csv format
+ * Zeus.SqlTracker: tracks events into a SQL database
+ * Zeus.Web: HTTP endpoint
  
- Web: 25% memory, 50% CPU
- DB size: 400 MB
- Average response time: 200-400ms
- 15,000 requests / min
- 100,000 requests total
+ Unit Tests projects:
+ * Zeus.Exporter.Tests
+ * Zeus.SqlTracker.Tests
+ * Zeus.Web.Tests
 
+ #### Web
+ Contains the HTTP endpoint. It's using the ModelBinders to convert the query parameters. Has a simple endpoint in the TrackController. It's using an ITracker to track the events.
+ Dependency injection is done using the Unity framework. 
+
+ #### SqlTracker
+ Tracks events into a MS SQL database. It's using Entity Framework 6.1.3 for ORM mapping. The "create.sql" script can be used to create the database tables. The summarization is done in the SQL server, the query is created using Linq. 
+
+ #### Exporter: 
+ Usage: .\exporter.exe or .\exporter.exe 2017-06-19
+ Creates the file in the current directory. The name of the file is events_{date}.csv.
+ If the file already exists, it's overwritten without notice.
+ 
+ ### Load Testing in Azure
+ The solution was deployed to Azure, using App Services and SQL databases.
+
+ Configuration:
+ * Web Server: 4 Core, 7 GB RAM
+ * SQL Server: 100 DTU/s
+
+ Load Testing with 2 computers:
+ * 250 requests / sec
+ * locustio configuration in the file "locustfile.py"
+ * 50,000 different product ids
+ * 10 products / requets
+ * test running for about an hour
+ 
+ Results:
+ * over 10,000,000 rows in the database
+ * Web server utilization: 25% memory, 50% CPU
+ * Average response time: 200-400ms
+ * 15,000 requests / min
+ * 1,000,000 requests total
+ * exporting [1.5MB file](https://github.com/mdavid626/zeus/blob/master/doc/events_2017-06-19.csv?raw=true) took 50s (100 DTU/s) and 13s (1000 DTU/s)
+ * final DB size: 400 MB
+ 
  #### CPU and Memory utilization
   ![CPU/Memory](https://github.com/mdavid626/zeus/blob/master/doc/cpu.jpg?raw=true)
 
